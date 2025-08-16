@@ -1,0 +1,48 @@
+﻿@model com.pe.vakimu.application.Models.Entities.Sucursal
+
+@{
+    ViewBag.Title = "Eliminar Sucursal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-4">
+    <div class="card shadow-sm border-danger">
+        <div class="card-header bg-danger text-white">
+            <h4 class="mb-0"><i class="bi bi-exclamation-triangle-fill"></i> Confirmar Eliminación</h4>
+        </div>
+        <div class="card-body">
+            <p class="text-danger fw-semibold">¿Estás seguro de que deseas eliminar esta sucursal? Esta acción no se puede deshacer.</p>
+            <dl class="row">
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Departamento.Nombre)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Departamento.Nombre)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Ubicacion)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Ubicacion)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Longitud)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Longitud)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Latitud)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Latitud)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Sede)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Sede)</dd>
+
+                <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Calle)</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Calle)</dd>
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left-circle"></i> Cancelar
+                    </a>
+                    <input type="submit" value="Eliminar" class="btn btn-danger" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

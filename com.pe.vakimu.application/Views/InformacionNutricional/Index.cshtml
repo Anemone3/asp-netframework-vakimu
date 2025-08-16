@@ -1,0 +1,63 @@
+﻿@model IEnumerable<com.pe.vakimu.application.Models.Entities.InformacionNutricional>
+
+@{
+    ViewBag.Title = "Información Nutricional";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Información Nutricional</h2>
+        <a href="@Url.Action("Create")" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Nuevo Registro
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle shadow-sm">
+            <thead class="table-info text-center">
+                <tr>
+                    <th>Producto</th>
+                    <th>Kcal</th>
+                    <th>Grasa Total</th>
+                    <th>Grasa Saturada</th>
+                    <th>Grasa Trans</th>
+                    <th>Colesterol (mg)</th>
+                    <th>Sodio (mg)</th>
+                    <th>Carbs</th>
+                    <th>Fibra</th>
+                    <th>Azúcar Total</th>
+                    <th>Azúcar Añadida</th>
+                    <th>Proteína</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Producto.Nombre</td>
+                        <td class="text-center">@item.EnergiaKcal</td>
+                        <td class="text-center">@item.GrasaTotal</td>
+                        <td class="text-center">@item.GrasaSaturada</td>
+                        <td class="text-center">@item.GrasaTrans</td>
+                        <td class="text-center">@item.ColesterolMg</td>
+                        <td class="text-center">@item.SodioMg</td>
+                        <td class="text-center">@item.CarbohidratosTotales</td>
+                        <td class="text-center">@item.FibraDietaria</td>
+                        <td class="text-center">@item.AzucaresTotales</td>
+                        <td class="text-center">@item.AzucaresAnhadidos</td>
+                        <td class="text-center">@item.Proteina</td>
+                        <td class="text-center">
+                            <div class="btn-group btn-group-sm" role="group">
+                                @Html.ActionLink("✏️", "Edit", new { id = item.IdProducto }, new { @class = "btn btn-outline-primary", title = "Editar" })
+                                @Html.ActionLink("🔍", "Details", new { id = item.IdProducto }, new { @class = "btn btn-outline-secondary", title = "Detalles" })
+                                @Html.ActionLink("🗑️", "Delete", new { id = item.IdProducto }, new { @class = "btn btn-outline-danger", title = "Eliminar" })
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

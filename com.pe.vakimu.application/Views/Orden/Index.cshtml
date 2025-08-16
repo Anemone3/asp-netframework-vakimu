@@ -1,0 +1,39 @@
+﻿@model IEnumerable<com.pe.vakimu.application.Models.Entities.Orden>
+
+@{
+    ViewBag.Title = "Órdenes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Listado de Órdenes</h2>
+
+    <table class="table table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Cliente</th>
+                <th>Sucursal</th>
+                <th>Tipo</th>
+                <th>Estado</th>
+                <th>Descripción</th>
+                <th>RUC</th>
+                <th>Método de Pago</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var orden in Model)
+            {
+                <tr>
+                    <td>@orden.Id</td>
+                    <td>@orden.Cliente.Nombre</td>
+                    <td>@orden.Tipo</td>
+                    <td>@orden.Estado</td>
+                    <td>@orden.Descripcion</td>
+                    <td>@orden.Ruc</td>
+                    <td>@orden.MetodoPago.Nombre</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

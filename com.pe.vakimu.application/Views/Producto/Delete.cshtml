@@ -1,0 +1,69 @@
+﻿@model com.pe.vakimu.application.Models.Entities.Producto
+
+@{
+    ViewBag.Title = "Eliminar Producto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-4">
+    <h2 class="text-danger mb-4"><i class="bi bi-trash-fill"></i> Confirmar Eliminación</h2>
+
+    <div class="alert alert-warning" role="alert">
+        <strong>¿Estás seguro?</strong> Esta acción no se puede deshacer.
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-danger text-white">
+            <strong>Producto a eliminar</strong>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-4">ID Nutricional</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.InformacionNutricional.IdProducto)</dd>
+
+                <dt class="col-sm-4">Nombre</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Nombre)</dd>
+
+                <dt class="col-sm-4">Descripción</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Descripcion)</dd>
+
+                <dt class="col-sm-4">SKU</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Sku)</dd>
+
+                <dt class="col-sm-4">Precio</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Precio)</dd>
+
+                <dt class="col-sm-4">Precio Oferta</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.PrecioOferta)</dd>
+
+                <dt class="col-sm-4">Stock</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Stock)</dd>
+
+                <dt class="col-sm-4">Disponible</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Disponible)</dd>
+
+                <dt class="col-sm-4">Imagen</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Imagen)</dd>
+
+                <dt class="col-sm-4">Última Actualización</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.FechaActualizada)</dd>
+            </dl>
+        </div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="mt-4 d-flex gap-3">
+            <button type="submit" class="btn btn-danger">
+                <i class="bi bi-trash3"></i> Eliminar
+            </button>
+            @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-secondary" })
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

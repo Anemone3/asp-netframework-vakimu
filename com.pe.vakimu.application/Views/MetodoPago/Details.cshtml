@@ -1,0 +1,35 @@
+﻿@model com.pe.vakimu.application.Models.Entities.MetodoPago
+
+@{
+    ViewBag.Title = "Detalle del Método de Pago";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h4 class="mb-0"><i class="bi bi-credit-card-2-front"></i> Detalles del Método de Pago</h4>
+            <div>
+                @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-light btn-sm me-2" })
+                @Html.ActionLink("Volver a la lista", "Index", null, new { @class = "btn btn-outline-light btn-sm" })
+            </div>
+        </div>
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-sm-3 fw-semibold text-secondary">
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Nombre)
+                </dd>
+
+                <dt class="col-sm-3 fw-semibold text-secondary">
+                    @Html.DisplayNameFor(model => model.Instrucciones)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Instrucciones)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>

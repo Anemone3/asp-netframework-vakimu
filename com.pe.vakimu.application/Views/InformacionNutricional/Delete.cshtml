@@ -1,0 +1,68 @@
+﻿@model com.pe.vakimu.application.Models.Entities.InformacionNutricional
+
+@{
+    ViewBag.Title = "Eliminar Información Nutricional";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-4">
+    <div class="card border-danger shadow-sm">
+        <div class="card-header bg-danger text-white">
+            <h4><i class="bi bi-exclamation-triangle-fill"></i> Confirmar eliminación</h4>
+        </div>
+        <div class="card-body">
+            <p class="lead">¿Estás seguro de que deseas eliminar esta información nutricional asociada al producto <strong>@Model.Producto.Nombre</strong>?</p>
+
+            <dl class="row">
+                <dt class="col-sm-4">Energía (Kcal)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.EnergiaKcal)</dd>
+
+                <dt class="col-sm-4">Grasa Total</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.GrasaTotal)</dd>
+
+                <dt class="col-sm-4">Grasa Saturada</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.GrasaSaturada)</dd>
+
+                <dt class="col-sm-4">Grasa Trans</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.GrasaTrans)</dd>
+
+                <dt class="col-sm-4">Colesterol (mg)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.ColesterolMg)</dd>
+
+                <dt class="col-sm-4">Sodio (mg)</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.SodioMg)</dd>
+
+                <dt class="col-sm-4">Carbohidratos Totales</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.CarbohidratosTotales)</dd>
+
+                <dt class="col-sm-4">Fibra Dietaria</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.FibraDietaria)</dd>
+
+                <dt class="col-sm-4">Azúcares Totales</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.AzucaresTotales)</dd>
+
+                <dt class="col-sm-4">Azúcares Añadidos</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.AzucaresAnhadidos)</dd>
+
+                <dt class="col-sm-4">Proteína</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Proteina)</dd>
+            </dl>
+        </div>
+        <div class="card-footer text-end bg-light">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <button type="submit" class="btn btn-danger me-2">
+                    <i class="bi bi-trash"></i> Eliminar
+                </button>
+
+                @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-secondary" })
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+}

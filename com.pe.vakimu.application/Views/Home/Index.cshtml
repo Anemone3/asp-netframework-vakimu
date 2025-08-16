@@ -1,0 +1,49 @@
+﻿@model List<com.pe.vakimu.application.Models.Response.ProductoConInfoNutricional>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="products-grid">
+    @foreach (var producto in Model)
+    {
+        <div class="product-card">
+            <div class="product-image-container">
+                <img src="@producto.Imagen" alt="@producto.Nombre" class="product-image" />
+                @if (!producto.Disponible || producto.Stock <= 0)
+                {
+                    <div class="sold-out-badge">Agotado</div>
+                }
+            </div>
+
+            <h3 class="product-name">@producto.Nombre</h3>
+            <div class="product-price">S/ @producto.Precio.ToString("0.00")</div>
+
+            <!-- Stock arriba de los controles -->
+            <div class="stock-info text-muted mb-1">Stock: @producto.Stock</div>
+            <div class="quantity-controls">
+                <button class="quantity-btn" onclick="decrementarCantidad(@producto.Id)">−</button>
+                <span id="cantidad-@producto.Id" class="quantity-display">1</span>
+                <button class="quantity-btn" onclick="incrementarCantidad(@producto.Id, @producto.Stock)">+</button>
+            </div>
+            @if (producto.Disponible && producto.Stock > 0)
+            {
+        
+
+                <button class="add-to-cart-btn"
+                        onclick="agregarDesdeVista(@producto.Id, '@producto.Nombre', @producto.Precio, '@producto.Imagen')">
+                    AGREGAR
+                </button>
+
+            }
+            else
+            {
+                <button class="add-to-cart-btn" disabled>AGOTADO</button>
+            }
+        </div>
+    }
+
+</div>
+

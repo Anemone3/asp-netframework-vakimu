@@ -1,0 +1,70 @@
+﻿@model com.pe.vakimu.application.Models.Entities.Sucursal
+
+@{
+    ViewBag.Title = "Crear Sucursal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0"><i class="bi bi-plus-circle"></i> Nueva Sucursal</h4>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="card-body">
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Ubicacion, new { @class = "form-label fw-semibold" })
+                    @Html.EditorFor(model => model.Ubicacion, new { htmlAttributes = new { @class = "form-control", placeholder = "Ej: Av. Los Próceres 123" } })
+                    @Html.ValidationMessageFor(model => model.Ubicacion, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        @Html.LabelFor(model => model.Longitud, new { @class = "form-label fw-semibold" })
+                        @Html.EditorFor(model => model.Longitud, new { htmlAttributes = new { @class = "form-control", placeholder = "Ej: -76.94877" } })
+                        @Html.ValidationMessageFor(model => model.Longitud, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        @Html.LabelFor(model => model.Latitud, new { @class = "form-label fw-semibold" })
+                        @Html.EditorFor(model => model.Latitud, new { htmlAttributes = new { @class = "form-control", placeholder = "Ej: -12.08977" } })
+                        @Html.ValidationMessageFor(model => model.Latitud, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.DepartamentoId, "Departamento", new { @class = "form-label fw-semibold" })
+                    @Html.DropDownList("DepartamentoId", null, "-- Selecciona un departamento --", new { @class = "form-select" })
+                    @Html.ValidationMessageFor(model => model.DepartamentoId, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Sede, new { @class = "form-label fw-semibold" })
+                    @Html.EditorFor(model => model.Sede, new { htmlAttributes = new { @class = "form-control", placeholder = "Ej: Lima Norte" } })
+                    @Html.ValidationMessageFor(model => model.Sede, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Calle, new { @class = "form-label fw-semibold" })
+                    @Html.EditorFor(model => model.Calle, new { htmlAttributes = new { @class = "form-control", placeholder = "Ej: Calle Los Álamos" } })
+                    @Html.ValidationMessageFor(model => model.Calle, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="card-footer d-flex justify-content-between">
+                <a href="@Url.Action("Index")" class="btn btn-outline-secondary">
+                    <i class="bi bi-arrow-left-circle"></i> Cancelar
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-check-circle"></i> Crear Sucursal
+                </button>
+            </div>
+        }
+    </div>
+</div>

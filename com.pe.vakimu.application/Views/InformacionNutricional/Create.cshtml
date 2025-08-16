@@ -1,0 +1,105 @@
+﻿@model com.pe.vakimu.application.Models.Entities.InformacionNutricional
+
+@{
+    ViewBag.Title = "Registrar Información Nutricional";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-4">
+    <h2 class="mb-4"><i class="bi bi-clipboard-plus"></i> Nueva Información Nutricional</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.IdProducto, "Producto", htmlAttributes: new { @class = "form-label" })
+                    @Html.DropDownList("IdProducto", null, htmlAttributes: new { @class = "form-select" })
+                    @Html.ValidationMessageFor(model => model.IdProducto, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.EnergiaKcal, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.EnergiaKcal, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.EnergiaKcal, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.GrasaTotal, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.GrasaTotal, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.GrasaTotal, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.GrasaSaturada, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.GrasaSaturada, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.GrasaSaturada, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row g-3 mt-2">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.GrasaTrans, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.GrasaTrans, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.GrasaTrans, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.ColesterolMg, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.ColesterolMg, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ColesterolMg, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.SodioMg, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.SodioMg, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.SodioMg, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row g-3 mt-2">
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.CarbohidratosTotales, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.CarbohidratosTotales, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.CarbohidratosTotales, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.FibraDietaria, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.FibraDietaria, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.FibraDietaria, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(m => m.AzucaresTotales, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.AzucaresTotales, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.AzucaresTotales, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row g-3 mt-2">
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.AzucaresAnhadidos, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.AzucaresAnhadidos, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.AzucaresAnhadidos, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        @Html.LabelFor(m => m.Proteina, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Proteina, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Proteina, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer bg-light text-end">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-check-circle"></i> Registrar
+                </button>
+                @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-secondary ms-2" })
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.js"></script>
+}

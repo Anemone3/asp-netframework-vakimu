@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - Vakimu</title>
+
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- Estilo personalizado -->
+    <link href="~/Content/styles.css" rel="stylesheet" />
+    
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+        <div class="container-fluid">
+            <!-- Branding -->
+            <div class="d-flex flex-column">
+                <a href="@Url.Action("Index", "Home")" class="navbar-brand logo">Vakimu</a>
+                <p class="subtitle">SIMPLEMENTE SALUDABLE</p>
+            </div>
+            <!-- Toggler para móviles -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navegación -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Menú Maestros -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Maestros
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+                            <li>@Html.ActionLink("Departamentos", "Index", "Departamento", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Clientes", "Index", "Cliente", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Sucursales", "Index", "Sucursal", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Productos", "Index", "Producto", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Información Nutricional", "Index", "InformacionNutricional", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Métodos de Pago", "Index", "MetodoPago", null, new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Pedidos", "Index", "Orden", null, new { @class = "dropdown-item" })</li>
+
+                            </ul>
+                    </li>
+                </ul>
+
+                <!-- Íconos a la derecha -->
+                <ul class="navbar-nav d-flex align-items-center gap-3">
+                    <!-- Icono de usuario -->
+                    <li class="nav-item">
+                        <i class="bi bi-person fs-4 text-dark"></i>
+                    </li>
+
+                    <!-- Icono de búsqueda -->
+                    <li class="nav-item">
+                        <i class="bi bi-search fs-4 text-dark"></i>
+                    </li>
+
+                    <!-- Icono de carrito -->
+                    <li class="nav-item">
+                        <a class="nav-link position-relative" href="@Url.Action("Index", "Carrito")" title="Ver carrito">
+                            <i class="bi bi-cart fs-4"></i>
+                            <span id="cart-count" class="position-absolute top-0 start-75 translate-middle badge rounded-pill bg-dark">
+                                0
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content container mt-4">
+        @RenderBody()
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/cart.js"></script>
+
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

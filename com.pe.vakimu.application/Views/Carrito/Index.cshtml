@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="cart-container">
+    <div class="cart-header">
+        <h2 class="cart-title">Carrito de compras</h2>
+        <button class="close-btn" onclick="cerrarCarrito()">&times;</button>
+    </div>
+
+    <div class="cart-content">
+        <div class="cart-items" id="cart-items">
+            <!-- Los items se cargarán dinámicamente aquí -->
+        </div>
+
+    </div>
+
+    <div class="cart-summary">
+        <div class="subtotal">
+            <span>Subtotal</span>
+            <span id="subtotal">S/ 0.00</span>
+        </div>
+        <div class="action-buttons">
+            <button class="continue-btn" onclick="window.location.href='@Url.Action("Index", "Home")'">
+                Seguir Comprando
+            </button>
+            <button class="checkout-btn" onclick="window.location.href='@Url.Action("Index", "Checkout")'">
+                Finalizar Mi Pedido
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        cargarCarrito();
+    });
+</script>

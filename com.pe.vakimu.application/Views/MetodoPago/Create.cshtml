@@ -1,0 +1,47 @@
+﻿@model com.pe.vakimu.application.Models.Entities.MetodoPago
+
+@{
+    ViewBag.Title = "Nuevo Método de Pago";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-primary fw-bold">Registrar Método de Pago</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "form-label fw-semibold" })
+                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", placeholder = "Ej. Tarjeta de crédito" })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Instrucciones, htmlAttributes: new { @class = "form-label fw-semibold" })
+                    @Html.TextAreaFor(model => model.Instrucciones, new { @class = "form-control", rows = 4, placeholder = "Indica cómo se debe usar este método de pago" })
+                    @Html.ValidationMessageFor(model => model.Instrucciones, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a href="@Url.Action("Index")" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Volver
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save"></i> Guardar
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

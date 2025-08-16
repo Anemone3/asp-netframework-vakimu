@@ -1,0 +1,72 @@
+﻿@model com.pe.vakimu.application.Models.Entities.DetalleOrden
+
+@{
+    ViewBag.Title = "Agregar Detalle";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Agregar Detalle a Orden</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+                @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+                @* Si ya tienes el ordenId desde la orden anterior *@
+                @Html.HiddenFor(model => model.OrdenId)
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.ProductoId, "Producto", htmlAttributes: new { @class = "form-label" })
+                    @Html.DropDownList("ProductoId", null, "-- Seleccionar Producto --", htmlAttributes: new { @class = "form-select" })
+                    @Html.ValidationMessageFor(model => model.ProductoId, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Cantidad, htmlAttributes: new { @class = "form-label" })
+                    @Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control", type = "number", min = "1" } })
+                    @Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="mb-3">
+                    @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "form-label" })
+                    @Html.TextAreaFor(model => model.Descripcion, new { @class = "form-control", rows = 2 })
+                    @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        @Html.LabelFor(model => model.Descuento, htmlAttributes: new { @class = "form-label" })
+                        @Html.EditorFor(model => model.Descuento, new { htmlAttributes = new { @class = "form-control", type = "number", step = "0.01", min = "0" } })
+                        @Html.ValidationMessageFor(model => model.Descuento, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        @Html.LabelFor(model => model.Subtotal, htmlAttributes: new { @class = "form-label" })
+                        @Html.EditorFor(model => model.Subtotal, new { htmlAttributes = new { @class = "form-control", type = "number", step = "0.01", min = "0" } })
+                        @Html.ValidationMessageFor(model => model.Subtotal, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "form-label" })
+                        @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control", type = "number", step = "0.01", min = "0" } })
+                        @Html.ValidationMessageFor(model => model.Total, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-success">Guardar Detalle</button>
+                    @Html.ActionLink("Cancelar", "Create", "Orden", null, new { @class = "btn btn-secondary ms-2" })
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,0 +1,60 @@
+﻿@model com.pe.vakimu.application.Models.Entities.Cliente
+
+@{
+    ViewBag.Title = "Eliminar Cliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-4">
+    <div class="card border-danger shadow-sm">
+        <div class="card-header bg-danger text-white">
+            <h4 class="mb-0"><i class="bi bi-trash-fill"></i> Confirmar Eliminación</h4>
+        </div>
+        <div class="card-body">
+            <p class="fs-5 text-danger">
+                ¿Estás seguro que deseas eliminar el siguiente cliente?
+            </p>
+
+            <dl class="row">
+                <dt class="col-sm-3">Departamento</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Departamento.Nombre)</dd>
+
+                <dt class="col-sm-3">Nombre</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Nombre)</dd>
+
+                <dt class="col-sm-3">Apellidos</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Apellidos)</dd>
+
+                <dt class="col-sm-3">Correo</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Correo)</dd>
+
+                <dt class="col-sm-3">Contraseña</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Contrasena)</dd>
+
+                <dt class="col-sm-3">Dirección</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Direccion)</dd>
+
+                <dt class="col-sm-3">Descripción de Casa</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.DescripcionCasa)</dd>
+
+                <dt class="col-sm-3">Teléfono</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Telefono)</dd>
+
+                <dt class="col-sm-3">DNI</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Dni)</dd>
+
+                <dt class="col-sm-3">Distrito</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Distrito)</dd>
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="mt-4 d-flex justify-content-between">
+                    <input type="submit" value="Eliminar" class="btn btn-danger px-4" />
+                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "btn btn-secondary" })
+                </div>
+            }
+        </div>
+    </div>
+</div>

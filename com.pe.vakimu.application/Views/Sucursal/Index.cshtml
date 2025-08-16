@@ -1,0 +1,49 @@
+﻿@model IEnumerable<com.pe.vakimu.application.Models.Entities.Sucursal>
+
+@{
+    ViewBag.Title = "Sucursales";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0"><i class="bi bi-building"></i> Lista de Sucursales</h2>
+        @Html.ActionLink("➕ Nueva Sucursal", "Create", null, new { @class = "btn btn-success" })
+    </div>
+
+    <div class="table-responsive shadow-sm">
+        <table class="table table-bordered table-hover table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.First().Departamento.Nombre)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Ubicacion)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Longitud)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Latitud)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Sede)</th>
+                    <th>@Html.DisplayNameFor(model => model.First().Calle)</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(m => item.Departamento.Nombre)</td>
+                        <td>@Html.DisplayFor(m => item.Ubicacion)</td>
+                        <td>@Html.DisplayFor(m => item.Longitud)</td>
+                        <td>@Html.DisplayFor(m => item.Latitud)</td>
+                        <td>@Html.DisplayFor(m => item.Sede)</td>
+                        <td>@Html.DisplayFor(m => item.Calle)</td>
+                        <td class="text-center">
+                            <div class="btn-group btn-group-sm">
+                                @Html.ActionLink("✏️", "Edit", new { id = item.Id }, new { @class = "btn btn-outline-primary", title = "Editar" })
+                                @Html.ActionLink("🔍", "Details", new { id = item.Id }, new { @class = "btn btn-outline-secondary", title = "Detalles" })
+                                @Html.ActionLink("🗑️", "Delete", new { id = item.Id }, new { @class = "btn btn-outline-danger", title = "Eliminar" })
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

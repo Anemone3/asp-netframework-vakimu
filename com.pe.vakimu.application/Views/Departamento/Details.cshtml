@@ -1,0 +1,32 @@
+﻿@model com.pe.vakimu.application.Models.Entities.Departamento
+
+@{
+    ViewBag.Title = "Detalles del Departamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h4 class="mb-0">📄 Detalles del Departamento</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 fw-semibold">
+                            @Html.DisplayNameFor(model => model.Nombre)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.Nombre)
+                        </dd>
+                    </dl>
+                </div>
+                <div class="card-footer text-end">
+                    @Html.ActionLink("✏️ Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning me-2" })
+                    @Html.ActionLink("🔙 Volver", "Index", null, new { @class = "btn btn-secondary" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
